@@ -1,13 +1,14 @@
-import pytest
-from sqlalchemy import create_engine, event
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy_utils import database_exists, create_database, drop_database
-from fastapi.testclient import TestClient
 import typing as t
 
+import pytest
+from fastapi.testclient import TestClient
+from sqlalchemy import create_engine, event
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy_utils import create_database, database_exists, drop_database
+
 from app.core import config, security
-from app.db.session import Base, get_db
 from app.db import models
+from app.db.session import Base, get_db
 from app.main import app
 
 
@@ -88,7 +89,7 @@ def client(test_db):
 
 
 @pytest.fixture
-def test_job(test_db) -> models.User:
+def test_job(test_db) -> models.Job:
     """
     Make a test job in the database
     """
